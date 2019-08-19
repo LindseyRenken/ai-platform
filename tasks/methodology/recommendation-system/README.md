@@ -15,18 +15,18 @@ The inputs of this function are as follows:
 
 ## Outputs
 
-- recomendations_by_user.csv written to the 'outputs/{formatted datetime}/' folder in the root of this project.
+- recomendations_by_user.csv written to the 'output/{formatted datetime}/' folder in the root of this project with csv format and includes a header.
 
 ## Examples
 
-> mlflow run . -P dataset_file_name='subsampled_triplets.txt.zip' -P recom_n='5'
+> mlflow run . -P dataset_file_name='subsampled_triplets.txt.zip' -P recom_n='10'
 
-> mlflow run . -P dataset_file_name='train_triplets.txt.zip' -P recom_n='5'
+> mlflow run . -P dataset_file_name='train_triplets.txt.zip' -P recom_n='3'
 
 ## Future Work
 
 - Add option to force variable integer data to 1 or 0, instead of keeping it on an unbound scale, and add an option to set cutoff for casting data to 1 or 0 (e.g. more than 2 plays of a song is a 1 and anything less is a 0).
-- Try FunkSVD model
+- Experiment with other model algorithms, like FunkSVD model
 - Add content filtering model by comparing word embeddings of text tags and average the score with the results of the collaborative filtering model.
 - Make the personalization score calculation more efficient
 - Launch on Spark
