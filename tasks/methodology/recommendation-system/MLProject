@@ -1,0 +1,8 @@
+name: Recommendation System
+conda_env: conda.yaml
+entry_points:
+  main:
+    parameters:
+      dataset_file_name: string
+      recom_n: {type: int, default: 10}
+    command: "python main.py -r {dataset_file_name} {recom_n}"
