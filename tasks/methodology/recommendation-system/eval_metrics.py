@@ -7,6 +7,12 @@ import numpy as np
 
 
 def personalization_score(recom):
+    '''
+    Scores the model on how unique recommendations are to individual users.
+    A low score indicates recommendations are very similar. High scores are better.
+    Returns:  
+        Average recommendation similarity for all users (0 to 1).
+    '''
     # get all unique items recommended
     uniq_recom = unique_recomendations(recom)
     # create matrix for recommendations
@@ -27,11 +33,17 @@ def unique_recomendations(recom):
 
 
 def coverage_score(recom, num_items):
+    '''
+    Scores the model based on the percentage of items 
+    that are recommended out of all available items.
+    Returns:  
+        Percentage out of 100
+    '''
     uniq_recom = len(unique_recomendations(recom))
-    return round((uniq_recom/num_items)*100, 2)
+    return round(float(uniq_recom/num_items)*100, 2)
 
 
-def percision_recall_rmse(testing_data, recom, model):
+def precision_recall_rmse(testing_data, recom, model):
     precision_recall_by_user(testing_data, recom)
     eval_norm = tc.recommender.util.compare_models(
         testing_data, [model], model_names=['pearson'])
